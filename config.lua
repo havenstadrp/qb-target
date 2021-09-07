@@ -69,6 +69,25 @@ Config.BoxZones = {
         },
         distance = 1.5
     },
+    ["Mechanic"] = {
+        name = "Mechanic",
+        coords = vector3(-199.537, -1319.87, 31.089),
+        length = 0.5,
+        width = 0.5,
+        heading = 60.654,
+        debugPoly = true,
+        minZ = 30.6289,
+        maxZ = 31.2,
+        options = {
+            {
+                event = "Mech:duty", 
+                icon = "far fa-clipboard",
+                label = "Buy",
+                job = "police",
+            },
+        },
+        distance = 1.5
+    },
 }
 
 Config.PolyZones = {
@@ -76,7 +95,64 @@ Config.PolyZones = {
 }
 
 Config.TargetBones = {
-
+    ["main"] = {
+        bones = {
+            "door_dside_f",
+            "door_dside_r",
+            "door_pside_f",
+            "door_pside_r"
+        },
+        options = {
+            {
+                type = "client",
+                event = "vehiclekeys:client:GiveKeys",
+                icon = "fad fa-key",
+                label = "GIVE KEYS",
+            },
+            {
+                type = "client",
+                event = "police:client:PutPlayerInVehicle",
+                icon = "fas fa-chevron-circle-left",
+                label = "PLACE IN VEHICLE",
+            },
+            {
+                type = "client",
+                event = "police:client:SetPlayerOutVehicle",
+                icon = "fas fa-chevron-circle-right",
+                label = "TAKE OUT OF VEHICLE",
+            },
+            {
+                type = "client",
+                event = "police:client:ImpoundVehicle",
+                icon = "fas fa-car",
+                label = "IMPOUND VEHICLE",
+                job = 'police'
+            },
+            {
+                type = "client",
+                event = "qb-trunk:client:GetIn",
+                icon = "fas fa-user-secret",
+                label = "GET IN TRUNK",
+            },
+            {
+                type = "client",
+                event = "CheckVehStatus",
+                icon = "fas fa-wrench",
+                label = "Examine Vehicle",
+            },
+            {
+                type = "client",
+                event = "vehicle:flipit",
+                icon = "fad fa-car-tilt",
+                label = "FLIP VEHICLE",
+                canInteract = function()
+                    vehicle = QBCore.Functions.GetClosestVehicle()
+                    return not IsVehicleOnAllWheels(vehicle)
+                end,
+            },
+        },  
+        distance = 3.0
+    },
 }
 
 Config.TargetEntities = {
@@ -112,7 +188,7 @@ Config.TargetModels = {
         options = {
             {
                 type = "client",
-                event = "qb-banking:client:bank:openUI",
+                event = "qb-banking:openBankScreen",
                 icon = "fal fa-money-check-edit-alt",
                 label = "Access Bank",
             },
@@ -186,6 +262,213 @@ Config.TargetModels = {
         },
         distance = 5
     },
+    ["fuel"] = {
+        models = {
+            `prop_gas_pump_1d`,
+            `prop_gas_pump_1a`,
+            `prop_gas_pump_1b`,
+            `prop_gas_pump_1c`,
+            `prop_vintage_pump`,
+            `prop_gas_pump_old2`,
+            `prop_gas_pump_old3`
+        },
+        options = {
+            {
+                type = "client",
+                event = "LegacyFuel:client:fuel",
+                icon = "fas fa-gas-pump",
+                label = "Refuel Vehicle",
+            },
+        },
+        distance = 5.0
+    },
+    ["normalgarage"] = {
+        models = {
+            `cs_floyd`,
+        },
+        options = {
+            {
+                type = "client",
+                event = "GarageOUT",
+                icon = "fas fa-car",
+                label = "GARAGE",
+            },
+        },
+        distance = 4.0
+    },
+    ["impound"] = {
+        models = {
+            `ig_floyd`,
+        },
+        options = {
+            {
+                type = "client",
+                event = "Impound",
+                parameters = {},
+                icon = "fas fa-car",
+                label = "Apreendidos",
+            },
+        },
+        distance = 4.0
+    },
+
+--POLICE GARAGE/EMS GARAGE
+    ["policegarage"] = {
+        objects = {
+            `csb_trafficwarden`,
+        },
+        options = {
+            {
+                type = "client",
+                event = "garage:menu",
+                icon = "fas fa-car",
+                label = "PD GARAGE",
+                job = police
+            },
+            {
+                type = "client",
+                event = "garage:menu2",
+                icon = "fas fa-car",
+                label = "EMS GARAGE",
+                job = ambulance
+            }
+        },
+        distance = 2.5
+    },
+
+--PD HELICOPTER GARAGE
+    ["policehelicoptergarage"] = {
+        models = {
+            `s_m_m_pilot_02`,
+        },
+        objects = {
+            {
+                type = "client",
+                event = "garage:menu3",
+                icon = "fas fa-car",
+                label = "PD Helicopter",
+                job = police
+            },
+        },
+        distance = 2.5
+    },
+    ["cityhall"] = {
+        models = {
+            `s_m_m_highsec_02`
+        },
+        options = {
+            {
+                type = "client",
+                event = "QBJobs",
+                icon = "fas fa-money-bill",
+                label = "Apply for job",
+            },
+        },
+        distance = 4.0
+    },
+    ["Clothing"] = {
+        models = {
+            cs_natalia
+        },
+        options = {
+            {
+                type = "client",
+                event = "qb-clothing:client:openclothes",
+                icon = "fas fa-tshirt",
+                label = "Open Clothing Store",
+
+            },
+        },
+        distance = 2.5
+    },
+    ["burgershotgarage"] = {
+        models = {
+            "ig_floyd"
+        },
+        options = {
+            {
+                type = "client",
+                event = "garage:BurgerShotGarage",
+                icon = "fas fa-car",
+                label = "BurgerShot Garage",
+                job = "burgershot",
+            },
+        },
+        distance = 2.5
+    },
+    ["Scrapyard"] = {
+        models = {
+            `s_m_y_construct_02`
+        },
+        options = {
+            {
+                type = "client",
+                event = "qb-scapyard:client:setNewVehicles",
+                icon = "fas fa-wrench",
+                label = "Car List",
+                --job = "police",
+            },
+        },
+        distance = 2.5
+    },
+    ["MechanicJob"] = {
+        models = {
+            `s_m_y_construct_02`
+        },
+        options = {
+            {
+                type = "client",
+                event = "qb-mechanic:client:setNewVehicles",
+                icon = "fas fa-wrench",
+                label = "Mechanic",
+                --job = "Mechanic",
+            },
+        },
+        distance = 2.5
+    },
+    ["MechanicJob"] = {
+        models = {
+            `csb_cop`
+        },
+        options = {
+            {
+                type = "client",
+                event = "qb-mechanic:client:setNewVehicles",
+                icon = "fas fa-wrench",
+                label = "Mechanic",
+                --job = "Mechanic",
+            },
+        },
+        distance = 2.5
+    },
+    ["pillboxarmoury"] = {
+        models = {
+            `s_f_y_cop_01`
+        },
+        options = {
+            {
+                type = "client",
+                event = "MRPDPoliceArmory",
+                icon = "fas fa-boxes",
+                label = "Armory",
+                job = "police",
+            },
+        },
+        distance = 2.5,
+    },
+    ["apartmamentped"] = {
+        models = {
+            `mp_m_securoguard_01`
+        },
+        options = {
+            {
+                event = "GarageOUT",
+                icon = "fas fa-money-bill-wave",
+                label = "Access Garage",
+            },
+        },
+        distance = 3.0
+    },
 }
 
 Config.GlobalPedOptions = {
@@ -201,7 +484,43 @@ Config.GlobalObjectOptions = {
 }
 
 Config.GlobalPlayerOptions = {
+    options = {
+        {
+            type = "client",
+            event = "police:client:CuffPlayer",
+            icon = "fas fa-circle",
+            label = "Cuff / Uncuff",
+            --item = 'handcuffs',
+            job = {
+                ["police"] = 0,
+                ["ambulance"] = 0,
+            }
+        },
+        {
+            type = "client",
+            event = "qb-phone:client:GiveContactDetails",
+            icon = "fas fa-circle",
+            label = "Give Contact Details"
+        },
+        {
+            type = "client",
+            event = "police:client:RobPlayer",
+            icon = "fas fa-circle",
+            label = "Rob Person"
+        },
+        {
+            type = "client",
+            event = "police:client:EscortPlayer",
+            icon = "fas fa-circle",
+            label = "Escort",
+            job = {
+                ["police"] = 9,
+                ["ambulance"] = 9,
+            }
+        }
 
+    },
+    distance = 2.5,
 }
 
 Config.Peds = {
@@ -274,9 +593,20 @@ Config.Peds = {
         coords = vector4(-331.61, 6084.92, 31.45, 226.57),
         gender = 'male'
     },  
--- Hardware Stores --
 
--- South Side
+	-- Casino Shops --
+
+	-- Chips
+	{
+		model = `a_m_y_smartcaspat_01`,
+		coords = vector4(950.3713, 33.25741, 70.838, 55.42),
+		gender = 'male',
+		scenario = 'WORLD_HUMAN_GUARD_STAND_CASINO'
+	},
+
+	-- Hardware Stores --
+
+	-- South Side
 	{
 		model = `mp_m_waremech_01`,
 		coords = vector4(45.54233, -1748.56, 29.586, 48.71),
@@ -383,6 +713,114 @@ Config.Peds = {
 		coords = vector4(308.4648, -595.217, 43.284, 70.26),
 		gender = 'male'
 	},  
+
+	-- Garages
+    {
+        model = `cs_floyd`,
+        coords = vector4(214.5521, -806.6836, 30.8109, 344.9621), --pilbox garage
+        gender = 'male',
+        scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+    {
+        model = `cs_floyd`,
+        coords = vector4(-341.9556, -773.9421, 33.9687, 189.1588), -- san andreas
+        gender = 'male',
+        scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+    {
+        model = `cs_floyd`,
+        coords = vector4(886.0934, -0.9179, 78.7650, 142.2141), -- casino
+        gender = 'male',
+        scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+    {
+        model = `cs_floyd`,
+        coords = vector4(276.31, -343.51, 44.92, 330.61), -- Pillbox Uppper Parking
+        gender = 'male',
+        scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+    {
+        model = `cs_floyd`,
+        coords = vector4(68.68, 14.51, 69.07, 338.6), -- Garages
+        gender = 'male',
+        scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+
+    -- Police station --
+
+    -- Armory
+    {
+        model = `s_f_y_cop_01`,
+        coords = vector4(480.41,-996.69, 30.69, 86.97), -- MRPD Armoury
+        gender = 'male',
+        scenario = 'WORLD_HUMAN_COP_IDLES'
+    },
+
+    -- Impound (city)
+    {
+    model = `ig_floyd`, -- Model name as a hash. 
+    coords = vector4(490.25, -1319.65, 29.2, 288.97), -- Hawick Ave (X, Y, Z, Heading)
+    gender = 'male', -- The gender of the ped, used for the CreatePed native.
+    scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+
+    -- BANK PED'S
+    {
+        model = `ig_bankman`,
+        coords = vector4(241.44, 227.19, 106.29, 170.43),
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
+    {
+        model = `ig_bankman`,
+        coords = vector4(313.84, -280.58, 54.16, 338.31), 
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
+    {
+        model = `ig_bankman`, 
+        coords = vector4(149.46, -1042.09, 29.37, 335.43), 
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
+    {
+        model = `ig_bankman`, 
+        coords = vector4(-351.23, -51.28, 49.04, 341.73), 
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
+    {
+        model = `ig_bankman`, 
+        coords = vector4(-1211.9, -331.9, 37.78, 20.07), 
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
+    {
+        model = `ig_bankman`, 
+        coords = vector4(-2961.14, 483.09, 15.7, 83.84), 
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
+    {
+        model = `ig_bankman`, 
+        coords = vector4(1174.8, 2708.2, 38.09, 178.52), 
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
+    {
+        model = `ig_bankman`, 
+        coords = vector4(-112.22, 6471.01, 31.63, 134.18), 
+        gender = 'male', 
+        animDict = 'anim@heists@prison_heiststation@cop_reactions',
+        animName = 'cop_b_idle'
+    },
 }
 
 -------------------------------------------------------------------------------
