@@ -88,6 +88,22 @@ Config.BoxZones = {
         },
         distance = 1.5
     },
+    ["mrpdevidence"] = {
+        models = {
+            `cs_tom`,
+        },
+        options = {
+            {
+                type = "client",
+                event = "police:evidence",
+                parameters = {},
+                icon = "fas fa-folder",
+                label = "Evidence Locker",
+                job = 'police',                
+            },
+        },
+        distance = 2.0
+    },
 }
 
 Config.PolyZones = {
