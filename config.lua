@@ -61,10 +61,9 @@ Config.BoxZones = {
             {
                 type = "client",
                 event = "Toggle:Duty",
-                parameters = {},
                 icon = "fas fa-clipboard",
                 label = "SIGN IN / SIGN OFF",
-                job = ambulance
+                job = "ambulance",
             },
         },
         distance = 1.5
@@ -75,7 +74,7 @@ Config.BoxZones = {
         length = 0.5,
         width = 0.5,
         heading = 60.654,
-        debugPoly = true,
+        debugPoly = false,
         minZ = 30.6289,
         maxZ = 31.2,
         options = {
@@ -255,12 +254,25 @@ Config.TargetModels = {
             {
                 type = "client",
                 event = "Hospital:CheckIn",
-                parameters = {},
                 icon = "fas fa-circle",
                 label = "Help, ik heb pijn!",
             },
         },
-        distance = 5
+        distance = 2.5
+    },
+    ["pillboxpoliceduty"] = {
+        models = {
+            `s_m_y_cop_01`,
+        },
+        options = {
+            {
+                type = "client",
+                event = "Toggle:Duty",
+                icon = "fas fa-circle",
+                label = "Help, ik heb pijn!",
+            },
+        },
+        distance = 2.5
     },
     ["fuel"] = {
         models = {
@@ -304,7 +316,6 @@ Config.TargetModels = {
             {
                 type = "client",
                 event = "Impound",
-                parameters = {},
                 icon = "fas fa-car",
                 label = "Apreendidos",
             },
@@ -707,10 +718,16 @@ Config.Peds = {
 		coords = vector4(2677.32, 3279.69, 55.24, 323.82),
 		gender = 'male'
 	},   
-	
+	-- Hospital
 	{
 		model = `s_f_y_scrubs_01`,
 		coords = vector4(308.4648, -595.217, 43.284, 70.26),
+		gender = 'male'
+	},  
+    -- Hospital Palito
+    {
+		model = `s_f_y_scrubs_01`,
+		coords = vector4(-256.989, 6327.257, 32.408, 5.526),
 		gender = 'male'
 	},  
 
@@ -746,6 +763,14 @@ Config.Peds = {
         scenario = 'WORLD_HUMAN_AA_COFFEE'
     },
 
+    -- Impound (city)
+    {
+    model = `hc_driver`, -- Model name as a hash. 
+    coords = vector4(-347.142, -128.657, 38.109, 67.93), -- Hawick Ave (X, Y, Z, Heading)
+    gender = 'male', -- The gender of the ped, used for the CreatePed native.
+    scenario = 'WORLD_HUMAN_STAND_MOBILE'
+    },
+
     -- Police station --
 
     -- Armory
@@ -760,6 +785,22 @@ Config.Peds = {
     {
     model = `ig_floyd`, -- Model name as a hash. 
     coords = vector4(490.25, -1319.65, 29.2, 288.97), -- Hawick Ave (X, Y, Z, Heading)
+    gender = 'male', -- The gender of the ped, used for the CreatePed native.
+    scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+
+    -- Paleto Duty
+    {
+    model = `s_m_y_cop_01`, -- Model name as a hash. 
+    coords = vector4(-448.461, 6012.780, 31.716, 336.2), -- Hawick Ave (X, Y, Z, Heading)
+    gender = 'male', -- The gender of the ped, used for the CreatePed native.
+    scenario = 'WORLD_HUMAN_AA_COFFEE'
+    },
+
+    -- Paleto armoury
+    {
+    model = `s_f_y_cop_01`, -- Model name as a hash. 
+    coords = vector4(-436.140, 5999.770, 31.716, 40.87), -- Hawick Ave (X, Y, Z, Heading)
     gender = 'male', -- The gender of the ped, used for the CreatePed native.
     scenario = 'WORLD_HUMAN_AA_COFFEE'
     },
