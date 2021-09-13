@@ -127,7 +127,7 @@ Config.TargetBones = {
                 event = "police:client:ImpoundVehicle",
                 icon = "fas fa-car",
                 label = "IMPOUND VEHICLE",
-                job = 'police'
+                job = "police"
             },
             {
                 type = "client",
@@ -167,10 +167,10 @@ Config.EntityZones = {
 Config.TargetModels = {
 	["atm"] = {
         models = {
-            `prop_atm_01`,
-            `prop_atm_02`,
-            `prop_atm_03`,
-            `prop_fleeca_atm`
+            'prop_atm_01',
+            'prop_atm_02',
+            'prop_atm_03',
+            'prop_fleeca_atm',
         },
         options = {
             {
@@ -184,7 +184,7 @@ Config.TargetModels = {
     },
 	["bank"] = {
         models = {
-            `ig_bankman`
+            'ig_bankman',
         },
         options = {
             {
@@ -198,17 +198,17 @@ Config.TargetModels = {
     },
 	["shops"] = {
 		models = {
-            `cs_josef`,
-            `mp_m_shopkeep_01`,
-            `mp_m_waremech_01`,
-            `a_m_y_smartcaspat_01`,
-            `s_f_m_maid_01`,
-            `s_m_m_linecook`,
-            `s_f_y_beachbarstaff_01`,
-            `u_m_o_finguru_01`,
-            `s_f_y_beachbarstaff_01`,
-            `u_m_o_finguru_01`,
-            `s_m_y_ammucity_01`,
+            'cs_josef',
+            'mp_m_shopkeep_01',
+            'mp_m_waremech_01',
+            'a_m_y_smartcaspat_01',
+            's_f_m_maid_01',
+            's_m_m_linecook',
+            's_f_y_beachbarstaff_01',
+            'u_m_o_finguru_01',
+            's_f_y_beachbarstaff_01',
+            'u_m_o_finguru_01',
+            's_m_y_ammucity_01',
         },
         options = {
             {
@@ -222,7 +222,7 @@ Config.TargetModels = {
     },
 	["emial"] = { -- SCAPYARD
         models = {
-            `csb_mp_agent14`,
+            'csb_mp_agent14',
         },
         options = {
             {
@@ -236,7 +236,7 @@ Config.TargetModels = {
     },
 	["cityhall"] = { -- SCAPYARD
         models = {
-            `ig_molly`,
+            'ig_molly',
         },
         options = {
             {
@@ -250,7 +250,7 @@ Config.TargetModels = {
     },
 	["pillboxcheckin"] = {
         models = {
-            `s_f_y_scrubs_01`,
+            's_f_y_scrubs_01',
         },
         options = {
             {
@@ -264,7 +264,7 @@ Config.TargetModels = {
     },
     ["pillboxpoliceduty"] = {
         models = {
-            `s_m_y_cop_01`,
+            's_m_y_cop_01',
         },
         options = {
             {
@@ -278,13 +278,13 @@ Config.TargetModels = {
     },
     ["fuel"] = {
         models = {
-            `prop_gas_pump_1d`,
-            `prop_gas_pump_1a`,
-            `prop_gas_pump_1b`,
-            `prop_gas_pump_1c`,
-            `prop_vintage_pump`,
-            `prop_gas_pump_old2`,
-            `prop_gas_pump_old3`
+            'prop_gas_pump_1d',
+            'prop_gas_pump_1a',
+            'prop_gas_pump_1b',
+            'prop_gas_pump_1c',
+            'prop_vintage_pump',
+            'prop_gas_pump_old2',
+            'prop_gas_pump_old3',
         },
         options = {
             {
@@ -298,7 +298,7 @@ Config.TargetModels = {
     },
     ["normalgarage"] = {
         models = {
-            `cs_floyd`,
+            'cs_floyd',
         },
         options = {
             {
@@ -312,7 +312,7 @@ Config.TargetModels = {
     },
     ["impound"] = {
         models = {
-            `ig_floyd`,
+            'ig_floyd',
         },
         options = {
             {
@@ -325,49 +325,49 @@ Config.TargetModels = {
         distance = 4.0
     },
 
---POLICE GARAGE/EMS GARAGE
-    ["policegarage"] = {
-        objects = {
-            `csb_trafficwarden`,
-        },
-        options = {
-            {
-                type = "client",
-                event = "garage:menu",
-                icon = "fas fa-car",
-                label = "PD GARAGE",
-                job = police
-            },
-            {
-                type = "client",
-                event = "garage:menu2",
-                icon = "fas fa-car",
-                label = "EMS GARAGE",
-                job = ambulance
-            }
-        },
-        distance = 2.5
-    },
+-- --POLICE GARAGE/EMS GARAGE
+--     ["policegarage"] = {
+--         objects = {
+--             'csb_trafficwarden',
+--         },
+--         options = {
+--             {
+--                 type = "client",
+--                 event = "garage:menu",
+--                 icon = "fas fa-car",
+--                 label = "PD GARAGE",
+--                 job = "police",
+--             },
+--             {
+--                 type = "client",
+--                 event = "garage:menu2",
+--                 icon = "fas fa-car",
+--                 label = "EMS GARAGE",
+--                 job = 'ambulance',
+--             }
+--         },
+--         distance = 2.5
+--     },
 
 --PD HELICOPTER GARAGE
-    ["policehelicoptergarage"] = {
+    ["polcoptergarage"] = {
         models = {
-            `s_m_m_pilot_02`,
+            's_m_m_pilot_02',
         },
-        objects = {
+        options = {
             {
                 type = "client",
                 event = "garage:menu3",
                 icon = "fas fa-car",
                 label = "PD Helicopter",
-                job = police
+                job = "police",
             },
         },
         distance = 2.5
     },
     ["cityhall"] = {
         models = {
-            `s_m_m_highsec_02`
+            's_m_m_highsec_02',
         },
         options = {
             {
@@ -381,7 +381,7 @@ Config.TargetModels = {
     },
     ["Clothing"] = {
         models = {
-            cs_natalia
+            'cs_natalia',
         },
         options = {
             {
@@ -396,7 +396,7 @@ Config.TargetModels = {
     },
     ["burgershotgarage"] = {
         models = {
-            "ig_floyd"
+            'ig_floyd',
         },
         options = {
             {
@@ -411,7 +411,7 @@ Config.TargetModels = {
     },
     ["Scrapyard"] = {
         models = {
-            `s_m_y_construct_02`
+            's_m_y_construct_02',
         },
         options = {
             {
@@ -426,7 +426,7 @@ Config.TargetModels = {
     },
     ["MechanicJob"] = {
         models = {
-            `s_m_y_construct_02`
+            's_m_y_construct_02',
         },
         options = {
             {
@@ -441,7 +441,7 @@ Config.TargetModels = {
     },
     ["MechanicJob"] = {
         models = {
-            `csb_cop`
+            'csb_cop',
         },
         options = {
             {
@@ -456,7 +456,7 @@ Config.TargetModels = {
     },
     ["pillboxarmoury"] = {
         models = {
-            `s_f_y_cop_01`
+            's_f_y_cop_01',
         },
         options = {
             {
@@ -471,7 +471,7 @@ Config.TargetModels = {
     },
     ["apartmamentped"] = {
         models = {
-            `mp_m_securoguard_01`
+            'mp_m_securoguard_01',
         },
         options = {
             {
@@ -538,13 +538,13 @@ Config.GlobalPlayerOptions = {
 
 Config.Peds = {
 	{
-		model = `mp_m_shopkeep_01`, -- Model name as a hash.
+		model = 'mp_m_shopkeep_01', -- Model name as a hash.
 		coords = vector4(24.40255, -1347.44, 29.497, 267.2), -- Hawick Ave (X, Y, Z, Heading)
 		gender = 'male' -- The gender of the ped, used for the CreatePed native.
 	},
 
 	{
-		model = `ig_josef`,
+		model = 'ig_josef',
 		coords = vector4(-279.89, 6227.61, 31.71, 50.0), -- Paleto Bay
 		gender = 'male'
 	},
@@ -553,56 +553,56 @@ Config.Peds = {
 
     -- Legion Square
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(22.59, -1105.55, 29.80, 159.83),
         gender = 'male'
     },
 
     -- Popular Street
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(810.21, -2159.02, 29.62, 1.43),
         gender = 'male'
     },
 
     -- Vespucci Boulevard
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(842.42, -1035.31, 28.19, 358.67),
         gender = 'male'
     },
 
     -- Little Seoul
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(662.34, -933.61, 21.83, 180.99),
         gender = 'male'
     },
 
     -- Vinewood Hills
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(253.87, -50.58, 69.94, 67.39),
         gender = 'male'
     },
 
     -- Palomino Freeway
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(2567.97, 292.64, 108.73, 358.18),
         gender = 'male'
     },
 
     -- Sandy Shores
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(1692.21, 3760.91, 34.71, 229.39),
         gender = 'male'
     },
 
     -- Paleto
     {
-        model = `s_m_y_ammucity_01`,
+        model = 's_m_y_ammucity_01',
         coords = vector4(-331.61, 6084.92, 31.45, 226.57),
         gender = 'male'
     },  
@@ -611,7 +611,7 @@ Config.Peds = {
 
 	-- Chips
 	{
-		model = `a_m_y_smartcaspat_01`,
+		model = 'a_m_y_smartcaspat_01',
 		coords = vector4(950.3713, 33.25741, 70.838, 55.42),
 		gender = 'male',
 		scenario = 'WORLD_HUMAN_GUARD_STAND_CASINO'
@@ -621,21 +621,21 @@ Config.Peds = {
 
 	-- South Side
 	{
-		model = `mp_m_waremech_01`,
+		model = 'mp_m_waremech_01',
 		coords = vector4(45.54233, -1748.56, 29.586, 48.71),
 		gender = 'male',
 		scenario = 'WORLD_HUMAN_CLIPBOARD'
 	},
 	-- LS Freeway
 	{
-		model = `mp_m_waremech_01`,
+		model = 'mp_m_waremech_01',
 		coords = vector4(2748.02, 3473.83, 55.67, 226.21),
 		gender = 'male',
 		scenario = 'WORLD_HUMAN_CLIPBOARD'
 	},
 	-- Paleto
 	{
-		model = `mp_m_waremech_01`,
+		model = 'mp_m_waremech_01',
 		coords = vector4(-421.83, 6136.09, 31.87, 205.39),
 		gender = 'male',
 		scenario = 'WORLD_HUMAN_CLIPBOARD'
@@ -644,122 +644,122 @@ Config.Peds = {
 
 	-- Grove Street
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(24.5, -1346.63, 29.5, 273.18),
 		gender = 'male',
 	},
 	-- South Side
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(-46.86, -1758.22, 29.42, 45.15),
 		gender = 'male'
 	},
 	-- Little Soul
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(-706.02, -913.9, 19.22, 86.17),
 		gender = 'male'
 	},
 	-- Carrson Ave
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(372.6, 327.06, 103.57, 258.49),
 		gender = 'male'
 	},
 	-- North Rockford
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(-1819.96, 794.04, 138.09, 126.36),
 		gender = 'male'
 	},
 	-- Great Ocean South
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(-3039.89, 584.21, 7.91, 16.15),
 		gender = 'male'
 	},
 	-- Barbareno Road
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(-3243.19, 999.94, 12.83, 352.25),
 		gender = 'male'
 	},
 	-- Mirror Park
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(1164.72, -323.04, 69.21, 93.92),
 		gender = 'male'
 	},
 	-- Route 68
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(549.24, 2670.37, 42.16, 94.15),
 		gender = 'male'
 	},
 	-- Sandy
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(1959.72, 3740.68, 32.34, 297.43),
 		gender = 'male'
 	},
 	-- Grape Seed
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(1697.8, 4923.14, 42.06, 321.33),
 		gender = 'male'
 	},
 	-- Great Ocean North
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(1728.33, 6416.21, 35.04, 241.78),
 		gender = 'male'
 	},
 	-- Ls Freeway
 	{
-		model = `mp_m_shopkeep_01`,
+		model = 'mp_m_shopkeep_01',
 		coords = vector4(2677.32, 3279.69, 55.24, 323.82),
 		gender = 'male'
 	},   
 	-- Hospital
 	{
-		model = `s_f_y_scrubs_01`,
+		model = 's_f_y_scrubs_01',
 		coords = vector4(308.4648, -595.217, 43.284, 70.26),
 		gender = 'male'
 	},  
     -- Hospital Palito
     {
-		model = `s_f_y_scrubs_01`,
+		model = 's_f_y_scrubs_01',
 		coords = vector4(-256.989, 6327.257, 32.408, 5.526),
 		gender = 'male'
 	},  
 
 	-- Garages
     {
-        model = `cs_floyd`,
+        model = 'cs_floyd',
         coords = vector4(214.5521, -806.6836, 30.8109, 344.9621), --pilbox garage
         gender = 'male',
         scenario = 'WORLD_HUMAN_AA_COFFEE'
     },
     {
-        model = `cs_floyd`,
+        model = 'cs_floyd',
         coords = vector4(-341.9556, -773.9421, 33.9687, 189.1588), -- san andreas
         gender = 'male',
         scenario = 'WORLD_HUMAN_AA_COFFEE'
     },
     {
-        model = `cs_floyd`,
+        model = 'cs_floyd',
         coords = vector4(886.0934, -0.9179, 78.7650, 142.2141), -- casino
         gender = 'male',
         scenario = 'WORLD_HUMAN_AA_COFFEE'
     },
     {
-        model = `cs_floyd`,
+        model = 'cs_floyd',
         coords = vector4(276.31, -343.51, 44.92, 330.61), -- Pillbox Uppper Parking
         gender = 'male',
         scenario = 'WORLD_HUMAN_AA_COFFEE'
     },
     {
-        model = `cs_floyd`,
+        model = 'cs_floyd',
         coords = vector4(68.68, 14.51, 69.07, 338.6), -- Garages
         gender = 'male',
         scenario = 'WORLD_HUMAN_AA_COFFEE'
@@ -767,7 +767,7 @@ Config.Peds = {
 
     -- Impound (city)
     {
-    model = `hc_driver`, -- Model name as a hash. 
+    model = 'hc_driver', -- Model name as a hash. 
     coords = vector4(-347.142, -128.657, 38.109, 67.93), -- Hawick Ave (X, Y, Z, Heading)
     gender = 'male', -- The gender of the ped, used for the CreatePed native.
     scenario = 'WORLD_HUMAN_STAND_MOBILE'
@@ -777,7 +777,7 @@ Config.Peds = {
 
     -- Armory
     {
-        model = `s_f_y_cop_01`,
+        model = 's_f_y_cop_01',
         coords = vector4(480.41,-996.69, 30.69, 86.97), -- MRPD Armoury
         gender = 'male',
         scenario = 'WORLD_HUMAN_COP_IDLES'
@@ -785,7 +785,7 @@ Config.Peds = {
 
     -- Impound (city)
     {
-    model = `ig_floyd`, -- Model name as a hash. 
+    model = 'ig_floyd', -- Model name as a hash. 
     coords = vector4(490.25, -1319.65, 29.2, 288.97), -- Hawick Ave (X, Y, Z, Heading)
     gender = 'male', -- The gender of the ped, used for the CreatePed native.
     scenario = 'WORLD_HUMAN_AA_COFFEE'
@@ -793,7 +793,7 @@ Config.Peds = {
 
     -- Paleto Duty
     {
-    model = `s_m_y_cop_01`, -- Model name as a hash. 
+    model = 's_m_y_cop_01', -- Model name as a hash. 
     coords = vector4(-448.461, 6012.780, 31.716, 336.2), -- Hawick Ave (X, Y, Z, Heading)
     gender = 'male', -- The gender of the ped, used for the CreatePed native.
     scenario = 'WORLD_HUMAN_AA_COFFEE'
@@ -801,7 +801,7 @@ Config.Peds = {
 
     -- Paleto armoury
     {
-    model = `s_f_y_cop_01`, -- Model name as a hash. 
+    model = 's_f_y_cop_01', -- Model name as a hash. 
     coords = vector4(-436.140, 5999.770, 31.716, 40.87), -- Hawick Ave (X, Y, Z, Heading)
     gender = 'male', -- The gender of the ped, used for the CreatePed native.
     scenario = 'WORLD_HUMAN_AA_COFFEE'
@@ -809,56 +809,56 @@ Config.Peds = {
 
     -- BANK PED'S
     {
-        model = `ig_bankman`,
+        model = 'ig_bankman',
         coords = vector4(241.44, 227.19, 106.29, 170.43),
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
         animName = 'cop_b_idle'
     },
     {
-        model = `ig_bankman`,
+        model = 'ig_bankman',
         coords = vector4(313.84, -280.58, 54.16, 338.31), 
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
         animName = 'cop_b_idle'
     },
     {
-        model = `ig_bankman`, 
+        model = 'ig_bankman', 
         coords = vector4(149.46, -1042.09, 29.37, 335.43), 
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
         animName = 'cop_b_idle'
     },
     {
-        model = `ig_bankman`, 
+        model = 'ig_bankman', 
         coords = vector4(-351.23, -51.28, 49.04, 341.73), 
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
         animName = 'cop_b_idle'
     },
     {
-        model = `ig_bankman`, 
+        model = 'ig_bankman', 
         coords = vector4(-1211.9, -331.9, 37.78, 20.07), 
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
         animName = 'cop_b_idle'
     },
     {
-        model = `ig_bankman`, 
+        model = 'ig_bankman', 
         coords = vector4(-2961.14, 483.09, 15.7, 83.84), 
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
         animName = 'cop_b_idle'
     },
     {
-        model = `ig_bankman`, 
+        model = 'ig_bankman', 
         coords = vector4(1174.8, 2708.2, 38.09, 178.52), 
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
         animName = 'cop_b_idle'
     },
     {
-        model = `ig_bankman`, 
+        model = 'ig_bankman', 
         coords = vector4(-112.22, 6471.01, 31.63, 134.18), 
         gender = 'male', 
         animDict = 'anim@heists@prison_heiststation@cop_reactions',
