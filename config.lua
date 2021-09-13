@@ -319,7 +319,7 @@ Config.TargetModels = {
                 type = "client",
                 event = "Impound",
                 icon = "fas fa-car",
-                label = "Apreendidos",
+                label = "Retrieve Seized Vehicle",
             },
         },
         distance = 4.0
@@ -475,6 +475,7 @@ Config.TargetModels = {
         },
         options = {
             {
+                type = "client",
                 event = "GarageOUT",
                 icon = "fas fa-money-bill-wave",
                 label = "Access Garage",
