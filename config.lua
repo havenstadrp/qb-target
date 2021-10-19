@@ -1816,14 +1816,170 @@ Config.Peds = {
         scenario = 'WORLD_HUMAN_BUM_STANDING'
     },
 
+    -- Straatbende
+    {
+        model = 's_m_y_dealer_01', -- Model name as a hash. 
+        coords = vector4(315.8828, -1093.63, 28.401, 85.48), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_LEANING'
+    },
+
+    -- Straatbende
+    {
+        model = 'a_m_y_latino_01', -- Model name as a hash. 
+        coords = vector4(315.1950, -1092.56, 28.401, 228.0), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_DRUG_DEALER'
+    },
+
+    -- Straatbende
+    {
+        model = 'csb_chin_goon', -- Model name as a hash. 
+        coords = vector4(315.3396, -1094.51, 28.401, 311.8), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_DRUG_DEALER'
+    },
+
+    -- Straatbende
+    {
+        model = 'a_m_m_tramp_01', -- Model name as a hash. 
+        coords = vector4(314.8370, -1089.56, 28.401, 272.6), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_BUM_SLUMPED'
+    },
+
+    -- Straatbende
+    {
+        model = 'a_f_o_indian_01', -- Model name as a hash. 
+        coords = vector4(245.7658, -814.412, 29.164, 142.6), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_PICNIC'
+    },
+
+    -- Straatbende
+    {
+        model = 'a_f_y_indian_01', -- Model name as a hash. 
+        coords = vector4(243.9526, -815.628, 29.185, 278.1), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_PICNIC'
+    },
+
+
+    -- Straatbende
+    {
+        model = 'a_m_m_indian_01', -- Model name as a hash. 
+        coords = vector4(245.4410, -816.565, 29.133, 356.7), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_PICNIC'
+    },
+
+
+    -- Straatbende
+    {
+        model = 'a_m_y_indian_01', -- Model name as a hash. 
+        coords = vector4(218.5871, -864.428, 29.272, 314.2), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_SMOKING_POT'
+    },
+
+    -- Straatbende
+    {
+        model = 'a_m_y_indian_01', -- Model name as a hash. 
+        coords = vector4(218.1487, -862.796, 29.281, 216.3), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_SMOKING_POT'
+    },
+
+    -- Rechtbank
+    {
+        model = 's_m_m_security_01', -- Model name as a hash. 
+        coords = vector4(239.1305, -1077.63, 29.294, 278.2), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_DRINKING'
+    },
+
+    -- Rechtbank
+    {
+        model = 'a_f_y_business_02', -- Model name as a hash. 
+        coords = vector4(243.4282, -1092.33, 29.294, 352.6), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_STAND_MOBILE'
+    },
+
+    -- Rechtbank
+    {
+        model = 'mp_m_securoguard_01', -- Model name as a hash. 
+        coords = vector4(259.2331, -1105.80, 29.294, 79.49), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_GUARD_STAND'
+    },
+
+    -- Blokkenpark Bar
+    {
+        model = 's_m_y_barman_01', -- Model name as a hash. 
+        coords = vector4(125.4516, -1036.00, 28.277, 66.56), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'male', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_SMOKING'
+    },
+
+    -- Blokkenpark Bar
+    {
+        model = 's_f_y_clubbar_01', -- Model name as a hash. 
+        coords = vector4(122.3978, -1037.75, 28.277, 314.6), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'female', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_PARTYING'
+    },
+
+    -- Blokkenpark Bar
+    {
+        model = 's_m_y_barman_01', -- Model name as a hash. 
+        coords = vector4(130.0805, -1054.60, 21.960, 343.1), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'male', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_SMOKING'
+    },
+
+    -- Blokkenpark Bar
+    {
+        model = 's_m_y_chef_01', -- Model name as a hash. 
+        coords = vector4(143.4767, -1055.71, 21.960, 65.61), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'male', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'PROP_HUMAN_BUM_BIN'
+    },
+
+    -- Blokkenpark Bar
+    {
+        model = 's_m_y_chef_01', -- Model name as a hash. 
+        coords = vector4(147.5283, -1057.85, 21.960, 250.5), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'male', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_STAND_MOBILE'
+    },
+
+    -- Car Dealer City
+    {
+        model = 'mp_f_execpa_02', -- Model name as a hash. 
+        coords = vector4(-55.6255, -1098.09, 25.422, 335.1), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'male', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_STAND_MOBILE'
+    },
+
+    -- Car Dealer City
+    {
+        model = 'mp_m_waremech_01', -- Model name as a hash. 
+        coords = vector4(-36.5584, -1086.71, 25.422, 249.8), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'male', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_LEANING'
+    },
+
+    -- Car Dealer City
+    {
+        model = 'mp_m_waremech_01', -- Model name as a hash. 
+        coords = vector4(-35.2099, -1087.36, 25.422, 82.37), -- Hawick Ave (X, Y, Z, Heading)
+        gender = 'male', -- The gender of the ped, used for the CreatePed native.
+        scenario = 'WORLD_HUMAN_SMOKING'
+    },
 
 
 
-
-
-
-
-    
 
     -- BANK PED'S
     {
