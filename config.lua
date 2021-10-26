@@ -2333,7 +2333,7 @@ Config.Peds = {
 
     -- Island Festival Guard
     {
-        model = 's_m_m_movprem_01', -- Model name as a hash. 
+        model = 's_m_y_doorman_01', -- Model name as a hash. 
         coords = vector4(4897.969, -4907.53, 2.3652, 173.9), -- Hawick Ave (X, Y, Z, Heading)
         gender = 'male', -- The gender of the ped, used for the CreatePed native.
         scenario = 'WORLD_HUMAN_GUARD_PATROL'
