@@ -11,7 +11,7 @@ Then, in the actual options themselves, we define 'police' as our required job.
 This is an example using **exports**
 
 ```lua
-exports['qb-target']:AddBoxZone("MissionRowDutyClipboard", vector3(441.7989, -982.0529, 30.67834), 0.45, 0.35, {
+exports['berkie-target']:AddBoxZone("MissionRowDutyClipboard", vector3(441.7989, -982.0529, 30.67834), 0.45, 0.35, {
 	name="MissionRowDutyClipboard",
 	heading=11.0,
 	debugPoly=false,
@@ -20,8 +20,8 @@ exports['qb-target']:AddBoxZone("MissionRowDutyClipboard", vector3(441.7989, -98
 	}, {
 		options = {
 			{
-            			type = "client",
-            			event = "Toggle:Duty",
+            	type = "client",
+            	event = "Toggle:Duty",
 				icon = "fas fa-sign-in-alt",
 				label = "Sign In",
 				job = "police",
@@ -31,13 +31,11 @@ exports['qb-target']:AddBoxZone("MissionRowDutyClipboard", vector3(441.7989, -98
 })
 
 -- This event is only for the QBCore resource qb-policejob
-RegisterNetEvent('Toggle:Duty')
-AddEventHandler('Toggle:Duty', function()
+RegisterNetEvent('Toggle:Duty', function()
     onDuty = not onDuty
     TriggerServerEvent("police:server:UpdateCurrentCops")
     TriggerServerEvent("QBCore:ToggleDuty")
     TriggerServerEvent("police:server:UpdateBlips")
-    TriggerEvent('qb-policealerts:ToggleDuty', onDuty)
 end)
 ```
 
@@ -68,13 +66,11 @@ Config.BoxZones = {
 }
 
 -- This event is only for the QBCore resource qb-policejob
-RegisterNetEvent('Toggle:Duty')
-AddEventHandler('Toggle:Duty', function()
+RegisterNetEvent('Toggle:Duty', function()
     onDuty = not onDuty
     TriggerServerEvent("police:server:UpdateCurrentCops")
     TriggerServerEvent("QBCore:ToggleDuty")
     TriggerServerEvent("police:server:UpdateBlips")
-    TriggerEvent('qb-policealerts:ToggleDuty', onDuty)
 end)
 ```
 
@@ -90,14 +86,16 @@ When defining multiple jobs, you **must** provide a minimum grade, even if you d
 
 ## AddTargetModel / item / canInteract()
 
-This is an example for player interaction. It utilizes both the `item` parameter and `canInteract()` function.
-
-`Config.Peds` in this example is a big list of playable ped hashes that players can play.
+This is an example for ped interaction. It utilizes both the `item` parameter and `canInteract()` function.
 
 This is an example using **exports**
 
 ```lua
-exports['qb-target']:AddTargetModel(Config.Peds, {
+Config.Peds = {
+    "g_m_importexport_0",
+    "g_m_m_armboss_01"
+}
+exports['berkie-target']:AddTargetModel(Config.Peds, {
 	options = {
 		{
 			event = "request:CuffPed",
@@ -111,7 +109,7 @@ exports['qb-target']:AddTargetModel(Config.Peds, {
 			icon = "fas fa-sack-dollar",
 			label = "Rob",
 			canInteract = function(entity)
-				if IsPedAPlayer(entity) then 
+				if not IsPedAPlayer(entity) then 
 					return IsEntityDead(entity)
 				end
 			end, 
@@ -123,14 +121,12 @@ exports['qb-target']:AddTargetModel(Config.Peds, {
 
 This is an example using the provided **config**
 
-**NOTE:** this is not an optimal way of interacting with players, this is just an example, use the Config.GlobalPlayerOptions for player interactions instead
-
 ```lua
 Config.TargetModels = {
     ["targetmodel1"] = {
         models = {
-            "mp_m_freemode_01",
-            "mp_f_freemode_01"
+            "g_m_importexport_0",
+            "g_m_m_armboss_01"
         },
         options = {
             {
@@ -147,10 +143,10 @@ Config.TargetModels = {
                 icon = "fas fa-sack-dollar",
                 label = "Rob",
                 canInteract = function(entity)
-			if IsPedAPlayer(entity) then 
-				return IsEntityDead(entity)
-			end
-		end, 
+			        if not IsPedAPlayer(entity) then 
+				        return IsEntityDead(entity)
+			        end
+		        end, 
             },
         },
         distance = 2.5,
@@ -159,12 +155,12 @@ Config.TargetModels = {
 ```
 
 ## Add Target Entity
-This is an example from a postop resource. Players can rent delivery vehicles in order to make deliveries. When they rent a vehicle, we apply this target to that entity only, which allows them to "get packages" from the vehicle.
+This is an example from a postop resource. Players can rent delivery vehicles in order to make deliveries. When they rent a vehicle, we apply this target to that entity only, which allows them to "get packages" from the vehicle. Reminder that the entity must always be networked for it to be interacted with.
 
 This is an example using **exports**
 
 ```lua
-exports['qb-target']:AddTargetEntity('mule2', {
+exports['berkie-target']:AddTargetEntity('mule2', {
     options = {
         {
             type = "client",
@@ -199,32 +195,27 @@ Config.TargetEntities = {
 ```
 
 ## Passing Item Data
-In this example, we define the model of the coffee machines you see around the map, and allow players to purchase a coffee. You'll have to provide your own logic for the purchase, but this is how you would handle it with qb-target, and how you would pass data through to an event for future use. 
+In this example, we define the model of the coffee machines you see around the map, and allow players to purchase a coffee. You'll have to provide your own logic for the purchase, but this is how you would handle it with berkie-target, and how you would pass data through to an event for future use. 
 
 This is an example using **exports**
 This example is **not** advised to use with the provided config
 
 ```lua
-local coffee = {
-    690372739,
-}
-exports['qb-target']:AddTargetModel(coffee, {
+exports['berkie-target']:AddTargetModel(690372739, {
     options = {
         {
             type = "client",
             event = "coffee:buy",
             icon = "fas fa-coffee",
             label = "Coffee",
-            itemname = "coffee",
             price = 5,
         },
     },
     distance = 2.5
 })
 
-RegisterNetEvent('coffee:buy')
-AddEventHandler('coffee:buy',function(data)
-    QBCore.Functions.Notify("You purchased a " .. data.itemname .. " for $" .. data.price .. ". Enjoy!", 'success')
+RegisterNetEvent('coffee:buy',function(data)
+    QBCore.Functions.Notify("You purchased a " .. data.label .. " for $" .. data.price .. ". Enjoy!", 'success')
     -- server event to buy the item here
 end)
 ```
@@ -251,7 +242,7 @@ AddEventHandler('plantpotato',function()
 
 	-- Logic to handle growth, create a thread and loop, or do something else. Up to you.
 
-	exports['qb-target']:AddEntityZone("potato-growing-"..plant, plant, {
+	exports['berkie-target']:AddEntityZone("potato-growing-"..plant, plant, {
 		name = "potato-growing-"..plant,
 		heading=GetEntityHeading(plant),
 		debugPoly=false,
