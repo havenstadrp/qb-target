@@ -1,5 +1,7 @@
 # Examples
 
+The config is in the init.lua
+
 ### All the exports have to be on the client-side to work!
 
 ## AddBoxZone / Job Check
@@ -17,26 +19,18 @@ exports['qb-target']:AddBoxZone("MissionRowDutyClipboard", vector3(441.7989, -98
 	debugPoly = false,
 	minZ = 30.77834,
 	maxZ = 30.87834,
-	}, {
-		options = {
-			{
-            	type = "client",
-            	event = "Toggle:Duty",
-				icon = "fas fa-sign-in-alt",
-				label = "Sign In",
-				job = "police",
-			},
+}, {
+	options = {
+		{
+            type = "client",
+            event = "qb-policejob:ToggleDuty",
+			icon = "fas fa-sign-in-alt",
+			label = "Sign In",
+			job = "police",
 		},
-		distance = 2.5
+	},
+	distance = 2.5
 })
-
--- This event is only for the QBCore resource qb-policejob, goes inside @qb-policejob/client/job.lua
-RegisterNetEvent('Toggle:Duty', function()
-    onDuty = not onDuty
-    TriggerServerEvent("police:server:UpdateCurrentCops")
-    TriggerServerEvent("QBCore:ToggleDuty")
-    TriggerServerEvent("police:server:UpdateBlips")
-end)
 ```
 
 This is an example using the provided **config**
@@ -54,24 +48,16 @@ Config.BoxZones = {
         maxZ = 30.87834,
         options = {
             {
-              type = "client",
-              event = "Toggle:Duty",
-              icon = "fas fa-sign-in-alt",
-              label = "Sign In",
-              job = "police",
+                type = "client",
+                event = "qb-policejob:ToggleDuty",
+                icon = "fas fa-sign-in-alt",
+                label = "Sign In",
+                job = "police",
             },
         },
         distance = 2.5
     },
 }
-
--- This event is only for the QBCore resource qb-policejob, goes inside @qb-policejob/client/job.lua
-RegisterNetEvent('Toggle:Duty', function()
-    onDuty = not onDuty
-    TriggerServerEvent("police:server:UpdateCurrentCops")
-    TriggerServerEvent("QBCore:ToggleDuty")
-    TriggerServerEvent("police:server:UpdateBlips")
-end)
 ```
 
 There is only one way you can define the job though, but you can also provide a `[key] = value` table instead to enable checking for more jobs or gangs:
@@ -93,15 +79,15 @@ This also applies to citizenid's, but citizenid's don't have grades so we set th
 ```lua
 citizenid = {
     ["JFJ94924"] = true,
-    ["KSD18372"] = true
+    ["KSD18372"] = true,
 }
 ```
 
-When defining multiple jobs or gangs, you **must** provide a minimum grade, even if you don't need one. This is due to how key/value tables work. Just set the minimum grade to 0. 
+When defining multiple jobs or gangs, you **must** provide a minimum grade, even if you don't need one. This is due to how key/value tables work. Set the minimum grade to the minimum grade of the job if you want everyone to access it. 
 
 ## AddTargetModel / item / canInteract()
 
-This is an example for ped interaction. It utilizes both the `item` parameter and `canInteract()` function.
+This is an example for ped interaction. It utilizes both the `item` parameter and `canInteract` function.
 
 This is an example using **exports**
 
@@ -124,10 +110,10 @@ exports['qb-target']:AddTargetModel(Config.Peds, {
 			icon = "fas fa-sack-dollar",
 			label = "Rob",
 			canInteract = function(entity)
-				if not IsPedAPlayer(entity) then 
+				if not IsPedAPlayer(entity) then
 					return IsEntityDead(entity)
 				end
-			end, 
+			end,
 		},
 	},
 	distance = 2.5,
@@ -158,10 +144,10 @@ Config.TargetModels = {
                 icon = "fas fa-sack-dollar",
                 label = "Rob",
                 canInteract = function(entity)
-			        if not IsPedAPlayer(entity) then 
+			        if not IsPedAPlayer(entity) then
 				        return IsEntityDead(entity)
 			        end
-		        end, 
+		        end,
             },
         },
         distance = 2.5,
@@ -170,7 +156,7 @@ Config.TargetModels = {
 ```
 
 ## Add Target Entity
-This is an example from a postop resource. Players can rent delivery vehicles in order to make deliveries. When they rent a vehicle, we apply this target to that entity only, which allows them to "get packages" from the vehicle. Reminder that the entity must always be networked for it to be interacted with.
+This is an example from a postop resource. Players can rent delivery vehicles in order to make deliveries. When they rent a vehicle, we apply this target to that entity only, which allows them to "get packages" from the vehicle
 
 This is an example using **exports**
 
@@ -210,10 +196,11 @@ Config.TargetEntities = {
 ```
 
 ## Passing Item Data
-In this example, we define the model of the coffee machines you see around the map, and allow players to purchase a coffee. You'll have to provide your own logic for the purchase, but this is how you would handle it with qb-target, and how you would pass data through to an event for future use. 
+In this example, we define the model of the coffee machines you see around the map, and allow players to purchase a coffee. You'll have to provide your own logic for the purchase, but this is how you would handle it with qb-target, and how you would pass data through to an event for future use.
 
 This is an example using **exports**
-This example is **not** advised to use with the provided config
+
+The event should **not** go into the config, hence why it's not provided with the config example, it's meant for a client file
 
 ```lua
 exports['qb-target']:AddTargetModel(690372739, {
@@ -233,6 +220,26 @@ RegisterNetEvent('coffee:buy',function(data)
     -- server event to buy the item here
     QBCore.Functions.Notify("You purchased a " .. data.label .. " for $" .. data.price .. ". Enjoy!", 'success')
 end)
+```
+
+This is an example using the provided **config**
+
+```lua
+Config.TargetModels = {
+    ['buyCoffee'] = {
+        models = 690372739,
+        options = {
+            {
+                type = "client",
+                event = "coffee:buy",
+                icon = "fas fa-coffee",
+                label = "Coffee",
+                price = 5,
+            },
+        },
+        distance = 2.5
+    }
+}
 ```
 
 ### EntityZone / Add a target in an event
@@ -271,11 +278,7 @@ AddEventHandler('plantpotato',function()
 				plant = plant,
 				job = "farmer",
 				canInteract = function(entity)
-					if Entity(entity).state.growth >= 100 then 
-						  return true
-					else 
-						  return false
-					end 
+					return Entity(entity).state.growth >= 100
 				end,
 			},
 		},
