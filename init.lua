@@ -29,6 +29,9 @@ Config.Standalone = false
 -- Enable outlines around the entity you're looking at
 Config.EnableOutline = false
 
+-- The color of the outline in rgb, the first value is red, the second value is green and the last value is blue. Here is a link to a color picker to get these values: https://htmlcolorcodes.com/color-picker/
+Config.OutlineColor = {255, 255, 255}
+
 -- Enable default options (Toggling vehicle doors)
 Config.EnableDefaultOptions = true
 
@@ -37,10 +40,12 @@ Config.DisableInVehicle = false
 
 -- Key to open the target
 Config.OpenKey = 'LMENU' -- Left Alt
-Config.OpenControlKey = 19 -- Control for keypress detection also Left Alt for the eye itself, controls are found here https://docs.fivem.net/docs/game-references/controls/
 
 -- Key to open the menu
 Config.MenuControlKey = 238 -- Control for keypress detection on the context menu, this is the Right Mouse Button, controls are found here https://docs.fivem.net/docs/game-references/controls/
+
+-- Whether to have the target as a toggle or not
+Config.Toggle = false
 
 -------------------------------------------------------------------------------
 -- Target Configs
@@ -1215,12 +1220,18 @@ CreateThread(function()
 		end)
 	else
 		local firstSpawn = false
-		AddEventHandler('playerSpawned', function()
-			if not firstSpawn then
-				SpawnPeds()
-				firstSpawn = true
-			end
+		local event = AddEventHandler('playerSpawned', function()
+			SpawnPeds()
+			firstSpawn = true
 		end)
+		-- Remove event after it has been triggered
+		while true do
+			if firstSpawn then
+				RemoveEventHandler(event)
+				break
+			end
+			Wait(1000)
+		end
 	end
 end)
 
