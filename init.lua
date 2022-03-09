@@ -571,6 +571,7 @@ Config.TargetModels = {
 		},
 		distance = 2.5,
 	},
+    
 }
 
 Config.GlobalPedOptions = {
@@ -619,13 +620,55 @@ Config.GlobalPlayerOptions = {
                 ["police"] = 9,
                 ["ambulance"] = 9,
             }
+        },
+        { 
+            type = "client",
+            event = "qb-policejob:client:actions",
+            icon = 'fas fa-circle',
+            label = 'Police Actions',
+            job = 'police',
+        },
+        { 
+            type = "client", 
+            event = "police:client:KidnapPlayer", 
+            icon = 'fas fa-circle', 
+            label = 'Kidnap Player',
         }
-
     },
     distance = 2.5,
 }
 
 Config.Peds = {
+
+    ["PizzaShopPed"] = {
+        model = 'u_m_o_dean', 
+        coords = vector4(802.89, -762.53, 31.55, 211.44),
+        minusOne = true, 
+        freeze = true, 
+        invincible = true, 
+        blockevents = true,
+        target = { 
+            options = {
+                {
+                    event = "qb-bossmenu:client:OpenMenu",
+                    icon = "fas fa-chart-line",
+                    label = "Open Boss Menu",
+                },
+                {
+                    event = "710-pizza:checkForDeliverys",
+                    icon = "fas fa-truck",
+                    label = "Check For Delivery Orders",
+                },
+                {
+                    type = "server",
+                    event = "QBCore:ToggleDuty",
+                    icon = "fas fa-clock",
+                    label = "Clock in/out",
+                },
+            },
+            distance = 2.5
+        },
+    },
 
     -- GABZ - ARCADE
     {
