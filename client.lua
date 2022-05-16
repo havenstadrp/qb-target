@@ -163,33 +163,47 @@ end
 
 exports('DrawOutlineEntity', DrawOutlineEntity)
 
-local function CheckEntity(flag, datatable, entity, distance)
-	if not next(datatable) then return end
-	table_wipe(sendDistance)
+local function SetupOptions(datatable, entity, distance, isZone)
+	if not isZone then table_wipe(sendDistance) end
 	table_wipe(nuiData)
 	local slot = 0
 	for _, data in pairs(datatable) do
 		if CheckOptions(data, entity, distance) then
-			slot += 1
+			slot = data.num or slot + 1
 			sendData[slot] = data
 			sendData[slot].entity = entity
 			nuiData[slot] = {
 				icon = data.icon,
+				targeticon = data.targeticon,
 				label = data.label
 			}
-			sendDistance[data.distance] = true
-		else sendDistance[data.distance] = false end
+			if not isZone then
+				sendDistance[data.distance] = true
+			end
+		else
+			if not isZone then
+				sendDistance[data.distance] = false
+			end
+		end
 	end
+	return slot
+end
+
+exports('SetupOptions', SetupOptions)
+
+local function CheckEntity(flag, datatable, entity, distance)
+	if not next(datatable) then return end
+	local slot = SetupOptions(datatable, entity, distance)
 	if not next(nuiData) then
 		LeaveTarget()
 		DrawOutlineEntity(entity, false)
 		return
 	end
 	success = true
-	SendNUIMessage({response = "foundTarget", data = sendData[slot].targeticon})
+	SendNUIMessage({response = "foundTarget", data = nuiData[slot].targeticon})
 	DrawOutlineEntity(entity, true)
 	while targetActive and success do
-		local _, dist, entity2, _ = RaycastCamera(flag)
+		local _, dist, entity2 = RaycastCamera(flag)
 		if entity ~= entity2 then
 			LeftTarget()
 			DrawOutlineEntity(entity, false)
@@ -289,29 +303,15 @@ local function EnableTarget()
 					if IsPedAPlayer(entity) then data = Players end
 					if data and next(data) then CheckEntity(flag, data, entity, distance) end
 
-				-- Vehicle bones
+				-- Vehicle bones and models
 				elseif entityType == 2 then
 					local closestBone, _, closestBoneName = CheckBones(coords, entity, Bones.Vehicle)
 					local datatable = Bones.Options[closestBoneName]
 					if datatable and next(datatable) and closestBone then
-						table_wipe(sendDistance)
-						table_wipe(nuiData)
-						local slot = 0
-						for _, data in pairs(datatable) do
-							if CheckOptions(data, entity, distance) then
-								slot += 1
-								sendData[slot] = data
-								sendData[slot].entity = entity
-								nuiData[slot] = {
-									icon = data.icon,
-									label = data.label
-								}
-								sendDistance[data.distance] = true
-							else sendDistance[data.distance] = false end
-						end
+						local slot = SetupOptions(datatable, entity, distance)
 						if next(nuiData) then
 							success = true
-							SendNUIMessage({response = "foundTarget", data = sendData[slot].targeticon})
+							SendNUIMessage({response = "foundTarget", data = nuiData[slot].targeticon})
 							DrawOutlineEntity(entity, true)
 							while targetActive and success do
 								local _, dist, entity2 = RaycastCamera(flag)
@@ -343,11 +343,11 @@ local function EnableTarget()
 							LeftTarget()
 							DrawOutlineEntity(entity, false)
 						end
-					else
-						-- Vehicle Model targets
-						local data = Models[GetEntityModel(entity)]
-						if data then CheckEntity(flag, data, entity, distance) end
 					end
+
+					-- Vehicle model targets
+					local data = Models[GetEntityModel(entity)]
+					if data then CheckEntity(flag, data, entity, distance) end
 
 				-- Entity targets
 				elseif entityType > 2 then
@@ -378,29 +378,17 @@ local function EnableTarget()
 					end
 				end
 				if closestZone then
-					table_wipe(nuiData)
-					local slot = 0
-					for _, data in pairs(closestZone.targetoptions.options) do
-						if CheckOptions(data, entity, distance) then
-							slot += 1
-							sendData[slot] = data
-							sendData[slot].entity = entity
-							nuiData[slot] = {
-								icon = data.icon,
-								label = data.label
-							}
-						end
-					end
+					local slot = SetupOptions(closestZone.targetoptions.options, entity, distance, true)
 					if next(nuiData) then
 						success = true
-						SendNUIMessage({response = "foundTarget", data = sendData[slot].targeticon})
+						SendNUIMessage({response = "foundTarget", data = nuiData[slot].targeticon})
 						if Config.DrawSprite then
 							listSprite[closestZone.name].success = true
 						end
 						DrawOutlineEntity(entity, true)
 						while targetActive and success do
-							local coords, distance = RaycastCamera(flag)
-							if not closestZone:isPointInside(coords) or distance > closestZone.targetoptions.distance then
+							local newCoords, dist = RaycastCamera(flag)
+							if not closestZone:isPointInside(newCoords) or dist > closestZone.targetoptions.distance then
 								LeftTarget()
 								DrawOutlineEntity(entity, false)
 								break
@@ -984,6 +972,7 @@ end)
 -- NUI Callbacks
 
 RegisterNUICallback('selectTarget', function(option, cb)
+	option = tonumber(option) or option
     SetNuiFocus(false, false)
     SetNuiFocusKeepInput(false)
 	Wait(100)
