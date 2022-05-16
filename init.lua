@@ -311,7 +311,7 @@ Config.TargetModels = {
         options = {
             {
                 type = "client",
-                event = "Hospital:CheckIn",
+                event = "qb-ambulancejob:checkin",
                 icon = "fas fa-circle",
                 label = "Help, ik heb pijn!",
             },
@@ -525,21 +525,21 @@ Config.TargetModels = {
         },
         distance = 2.5
     },
-    ["pillboxarmoury"] = {
-        models = {
-            's_f_y_cop_01',
-        },
-        options = {
-            {
-                type = "client",
-                event = "MRPDPoliceArmory",
-                icon = "fas fa-boxes",
-                label = "Armory",
-                job = "police",
-            },
-        },
-        distance = 2.5,
-    },
+    -- ["pillboxarmoury"] = {
+    --     models = {
+    --         's_f_y_cop_01',
+    --     },
+    --     options = {
+    --         {
+    --             type = "client",
+    --             event = "MRPDPoliceArmory",
+    --             icon = "fas fa-boxes",
+    --             label = "Armory",
+    --             job = "police",
+    --         },
+    --     },
+    --     distance = 2.5,
+    -- },
     ["apartmamentped"] = {
         models = {
             'mp_m_securoguard_01',
